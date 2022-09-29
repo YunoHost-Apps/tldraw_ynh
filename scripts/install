@@ -105,34 +105,39 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=1
 ynh_add_nginx_config
 
 #=================================================
-# SPECIFIC SETUP
+# ADD A CONFIGURATION
 #=================================================
-# ...
-#=================================================
+ynh_script_progression --message="Patching multiplayer file..." --weight=1
 
-#=================================================
-# CREATE DATA DIRECTORY
-#=================================================
-ynh_script_progression --message="Creating a data directory..." --weight=1
+ynh_secure_remove --file="$final_path/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+ynh_add_config --template="../conf/MultiplayerMenu.tsx" --destination="$final_path/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 
-datadir=/home/yunohost.app/$app
-ynh_app_setting_set --app=$app --key=datadir --value=$datadir
-
-mkdir -p $datadir
-
-chmod 750 "$datadir"
-chmod -R o-rwx "$datadir"
-chown -R $app:www-data "$datadir"
+chmod 400 "$final_path/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+chown $app:$app "$final_path/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
 
-ynh_add_config --template="some_config_file" --destination="$final_path/some_config_file"
+ynh_add_config --template="../conf/.env" --destination="$final_path/apps/www/.env"
 
-chmod 400 "$final_path/some_config_file"
-chown $app:$app "$final_path/some_config_file"
+chmod 400 "$final_path/apps/www/.env"
+chown $app:$app "$final_path/apps/www/.env"
+
+#=================================================
+# BUILD YARN DEPENDENCIES
+#=================================================
+
+pushd "$final_path"
+	ynh_use_nodejs
+	ynh_script_progression --message="Fetching Yarn dev dependencies... This can be very long, be patient !" --weight=18
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --network-timeout 1000000000 2>&1
+	ynh_script_progression --message="Cleaning cache... " --weight=3
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean 2>&1
+	ynh_script_progression --message="Building Yarn dev dependencies... This can be very long, be patient !" --weight=18
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build 2>&1
+popd
 
 #=================================================
 # SETUP SYSTEMD
@@ -168,14 +173,6 @@ ynh_script_progression --message="Starting a systemd service..." --weight=1
 ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
-# SETUP FAIL2BAN
-#=================================================
-ynh_script_progression --message="Configuring Fail2Ban..." --weight=1
-
-# Create a dedicated Fail2Ban config
-ynh_add_fail2ban_config --logpath="/var/log/nginx/${domain}-error.log" --failregex="Regex to match into the log for a failed login"
-
-#=================================================
 # SETUP SSOWAT
 #=================================================
 ynh_script_progression --message="Configuring permissions..." --weight=1
@@ -183,21 +180,8 @@ ynh_script_progression --message="Configuring permissions..." --weight=1
 # Make app public if necessary
 if [ $is_public -eq 1 ]
 then
-	# Everyone can access the app.
-	# The "main" permission is automatically created before the install script.
 	ynh_permission_update --permission="main" --add="visitors"
 fi
-
-### N.B. : the following extra permissions only make sense if your app
-### does have for example an admin interface or an API.
-
-# Only the admin can access the admin panel of the app (if the app has an admin panel)
-ynh_permission_create --permission="admin" --url="/admin" --allowed=$admin
-
-# Everyone can access the API part
-# We don't want to display the tile in the SSO so we put --show_tile="false"
-# And we don't want the YunoHost admin to be able to remove visitors group to this permission, so we put --protected="true"
-ynh_permission_create --permission="api" --url="/api" --allowed="visitors" --show_tile="false" --protected="true"
 
 #=================================================
 # RELOAD NGINX
