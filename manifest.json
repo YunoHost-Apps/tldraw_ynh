@@ -3,7 +3,8 @@
     "id": "tldraw",
     "packaging_format": 1,
     "description": {
-        "en": "A tiny little drawing app"
+        "en": "A tiny little drawing app",
+        "fr": "Application de dessin"
     },
     "version": "1.24.5~ynh2",
     "url": "https://tldraw.com",
@@ -46,11 +47,11 @@
                 "type": "string",
                 "help": {
                     "en": "Multiplayer mode requires a Liveblocks API Public Key (you can get one for free at https://liveblocks.io). Don't input anything if you don't want multiplayer mode.",
-                    "fr": "Le mode d'édition instantanée requiert une clef publique d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée"
+                    "fr": "Le mode d'édition instantanée requiert une clef publique d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée."
                 },
                 "ask": {
                     "en": "API Public Key",
-                    "fr": "API Public Key"
+                    "fr": "Clé publique de l'API"
                 }
             },
             {
@@ -58,11 +59,11 @@
                 "type": "string",
                 "help": {
                     "en": "Multiplayer mode requires a Liveblocks API Secret Key (you can get one for free at https://liveblocks.io). Don't input anything if you don't want multiplayer mode.",
-                    "fr": "Le mode d'édition instantanée requiert une clef secrete d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée"
+                    "fr": "Le mode d'édition instantanée requiert une clef secrete d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée."
                 },
                 "ask": {
                     "en": "API Secret Key",
-                    "fr": "API Secret Key"
+                    "fr": "Clé secrète de l'API"
                 }
             }
         ]
