@@ -1,13 +1,15 @@
 [Unit]
-Description=Small description of the service
+Description=A tiny little drawing app
 After=network.target
 
 [Service]
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__FINALPATH__/
-ExecStart=__FINALPATH__/script
+WorkingDirectory=__FINALPATH__/apps/www/
+Environment="NODE_ENV=production"
+Environment="__YNH_NODE_LOAD_PATH__"
+ExecStart=yarn start --port=__PORT__
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
