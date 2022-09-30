@@ -30,13 +30,11 @@
         "install": [
             {
                 "name": "domain",
-                "type": "domain"
-            },
-            {
-                "name": "path",
-                "type": "path",
-                "example": "/example",
-                "default": "/example"
+                "type": "domain",
+                "help": {
+                    "en": "TLDraw needs a fully dedicated domain",
+                    "fr": "TLDraw nécessite une installation à la racine du domaine"
+                }
             },
             {
                 "name": "is_public",
