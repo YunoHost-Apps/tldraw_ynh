@@ -9,7 +9,7 @@ Group=__APP__
 WorkingDirectory=__FINALPATH__/apps/www/
 Environment="NODE_ENV=production"
 Environment="__YNH_NODE_LOAD_PATH__"
-ExecStart=__YNH_NPM__ start
+ExecStart=yarn start --port=__PORT__
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
