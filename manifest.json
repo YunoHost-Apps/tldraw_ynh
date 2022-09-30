@@ -5,7 +5,7 @@
     "description": {
         "en": "A tiny little drawing app"
     },
-    "version": "1.24.5~ynh1",
+    "version": "1.24.5~ynh2",
     "url": "https://tldraw.com",
     "upstream": {
         "license": "mit",
