@@ -46,11 +46,11 @@ TLDraw is a tiny little drawing app.
 
 * TLDraw will not take a lot of disk or memory space while running.
     * **However**, you will need at least 2.5GB of RAM and 5GB of disk space during installation time
-    * The build can be quite long, be patient !
+    * The build can be quite long, be patient!
 
 * TLDraw offers all functionnalities (including multiplayer) for free at tldraw.com
     * However, they have restricted the use of multiplayer mode within an iFrame, which could be a problem
-    * TLDraw Yunohost app is patching that restriction so that you can use multiplayer mode within an iFrame as before
+    * TLDraw YunoHost app is patching that restriction so that you can use multiplayer mode within an iFrame as before
 
 * It could be possible to self-host a multiplayer layer in the future. Some projects have been launched, based on YJS library, such as https://github.com/nimeshnayaju/yjs-tldraw, but sadly none of them is mature enough to be included here.
     * Obviously, as soon as multiplayer could be enabled without going through Liveblocks SaaS servers, the app will be updated accordingly
