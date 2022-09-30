@@ -32,7 +32,7 @@ TLDraw is a tiny little drawing app.
 
 ## Captures d'écran
 
-![Capture d'écran de TLDraw](./doc/screenshots/TLDraw screenshot.png)
+![Capture d'écran de TLDraw](./doc/screenshots/TLDraw_screenshot.png)
 
 ## Avertissements / informations importantes
 
