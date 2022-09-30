@@ -129,8 +129,10 @@ chown $app:$app "$final_path/apps/www/.env"
 # BUILD YARN DEPENDENCIES
 #=================================================
 
-pushd "$final_path"
+pushd "$final_path/apps/www/"
 	ynh_use_nodejs
+	ynh_script_progression --message="Cleaning cache... " --weight=3
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean 2>&1
 	ynh_script_progression --message="Fetching Yarn dev dependencies... This can be very long, be patient !" --weight=18
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --network-timeout 1000000000 2>&1
 	ynh_script_progression --message="Cleaning cache... " --weight=3
