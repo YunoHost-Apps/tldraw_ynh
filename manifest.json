@@ -45,6 +45,7 @@
             {
                 "name": "publickey",
                 "type": "string",
+                "optional": true,
                 "help": {
                     "en": "Multiplayer mode requires a Liveblocks API Public Key (you can get one for free at https://liveblocks.io). Don't input anything if you don't want multiplayer mode.",
                     "fr": "Le mode d'édition instantanée requiert une clef publique d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée."
@@ -57,6 +58,7 @@
             {
                 "name": "secretkey",
                 "type": "string",
+                "optional": true,
                 "help": {
                     "en": "Multiplayer mode requires a Liveblocks API Secret Key (you can get one for free at https://liveblocks.io). Don't input anything if you don't want multiplayer mode.",
                     "fr": "Le mode d'édition instantanée requiert une clef secrete d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée."
