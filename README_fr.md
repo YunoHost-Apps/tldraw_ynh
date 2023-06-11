@@ -28,7 +28,6 @@ TLDraw is a tiny little drawing app.
 
 **Version incluse :** 1.24.5~ynh3
 
-
 **Démo :** https://tldraw.com
 
 ## Captures d’écran
