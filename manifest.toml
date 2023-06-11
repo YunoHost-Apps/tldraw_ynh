@@ -56,6 +56,8 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/tldraw/tldraw/archive/8e55e263bf45cb6d425178c638aec385ec01e62c.zip"
         sha256 = "d090aac97266e043418ec34d46e722dd69c7dace4bd30f39afb9478eb21271d1"
+        autoupdate.upstream = "https://github.com/tldraw/tldraw"
+        autoupdate.strategy = "latest_github_commit"
 
     [resources.ports]
 
