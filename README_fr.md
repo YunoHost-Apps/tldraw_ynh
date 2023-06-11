@@ -5,15 +5,16 @@ It shall NOT be edited by hand.
 
 # TLDraw pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/tldraw.svg)](https://dash.yunohost.org/appci/app/tldraw) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/tldraw.svg)](https://dash.yunohost.org/appci/app/tldraw) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
+
 [![Installer TLDraw avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=tldraw)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer TLDraw rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer TLDraw rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 TLDraw is a tiny little drawing app.
 
@@ -25,14 +26,13 @@ TLDraw is a tiny little drawing app.
 - Multiplayer mode (iFrame compatible)
 
 
-**Version incluse :** 1.24.5~ynh2
-
+**Version incluse :** 1.24.5~ynh2
 
 **Démo :** https://tldraw.com
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de TLDraw](./doc/screenshots/TLDraw_screenshot.png)
+![Capture d’écran de TLDraw](./doc/screenshots/TLDraw_screenshot.png)
 
 ## Avertissements / informations importantes
 
@@ -56,10 +56,10 @@ TLDraw is a tiny little drawing app.
     * Obviously, as soon as multiplayer could be enabled without going through Liveblocks SaaS servers, the app will be updated accordingly
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://tldraw.com>
+* Site officiel de l’app : <https://tldraw.com>
 * Documentation officielle utilisateur : <https://github.com/tldraw/tldraw/blob/main/guides/documentation.md>
-* Documentation officielle de l'admin : <https://github.com/tldraw/tldraw/blob/main/guides/documentation.md>
-* Dépôt de code officiel de l'app : <https://github.com/tldraw/tldraw>
+* Documentation officielle de l’admin : <https://github.com/tldraw/tldraw/blob/main/guides/documentation.md>
+* Dépôt de code officiel de l’app : <https://github.com/tldraw/tldraw>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_tldraw>
 * Signaler un bug : <https://github.com/YunoHost-Apps/tldraw_ynh/issues>
 
@@ -75,4 +75,4 @@ ou
 sudo yunohost app upgrade tldraw -u https://github.com/YunoHost-Apps/tldraw_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
