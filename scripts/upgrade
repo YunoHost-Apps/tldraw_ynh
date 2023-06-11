@@ -10,38 +10,10 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=1
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
-#REMOVEME? path=$(ynh_app_setting_get --app=$app --key=path)
-#REMOVEME? port=$(ynh_app_setting_get --app=$app --key=port)
-#REMOVEME? publickey=$(ynh_app_setting_get --app=$app --key=publickey)
-#REMOVEME? secretkey=$(ynh_app_setting_get --app=$app --key=secretkey)
-#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get --app=$app --key=install_dir)
-
-#=================================================
 # CHECK VERSION
 #=================================================
 
 upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
-#=================================================
-#REMOVEME? ynh_script_progression --message="Backing up the app before upgrading (may take a while)..." --weight=1
-
-# Backup the current version of the app
-#REMOVEME? ynh_backup_before_upgrade
-#REMOVEME? ynh_clean_setup () {
-	# Restore it if the upgrade fails
-#REMOVEME? 	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -51,14 +23,6 @@ upgrade_type=$(ynh_check_app_version_changed)
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
 ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
-
-# Create a dedicated user (if not existing)
-#REMOVEME? ynh_system_user_create --username=$app --home_dir="$install_dir"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -72,22 +36,16 @@ then
 	ynh_setup_source --dest_dir="$install_dir"
 fi
 
-chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
 # UPGRADE DEPENDENCIES
 #=================================================
-#REMOVEME? ynh_script_progression --message="Upgrading dependencies..." --weight=1
+ynh_script_progression --message="Upgrading dependencies..." --weight=1
 
 # Install nodejs
 ynh_install_nodejs --nodejs_version=$NODEJS_VERSION 2>&1
-
-#REMOVEME? #ynh_install_app_dependencies $pkg_dependencies 2>&1
-
-# Install Yarn
-#REMOVEME? ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg" 2>&1
 
 #=================================================
 # NGINX CONFIGURATION
@@ -102,7 +60,7 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Patching multiplayer file..." --weight=1
 
-#REMOVEME? ynh_secure_remove --file="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+ynh_secure_remove --file="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 ynh_add_config --template="../conf/MultiplayerMenu.tsx" --destination="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 
 chmod 400 "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
@@ -124,11 +82,9 @@ chown $app:$app "$install_dir/apps/www/.env"
 
 pushd "$install_dir"
 	ynh_use_nodejs
-#REMOVEME? 	ynh_script_progression --message="Fetching Yarn dev dependencies... This can be very long, be patient !" --weight=18
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --network-timeout 1000000000 2>&1
 	ynh_script_progression --message="Cleaning cache... " --weight=3
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean 2>&1
-#REMOVEME? 	ynh_script_progression --message="Building Yarn dev dependencies... This can be very long, be patient !" --weight=18
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build 2>&1
 popd
 
@@ -163,13 +119,6 @@ yunohost service add $app --description="A tiny little drawing app" --log="/var/
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT

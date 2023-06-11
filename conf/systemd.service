@@ -1,5 +1,5 @@
 [Unit]
-Description=A tiny little drawing app
+Description=TLDraw: tiny little drawing app
 After=network.target
 
 [Service]
