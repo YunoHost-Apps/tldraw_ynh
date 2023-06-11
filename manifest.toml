@@ -1,0 +1,77 @@
+packaging_format = 2
+
+id = "tldraw"
+name = "TLDraw"
+description.en = "Tiny little drawing app"
+description.fr = "Petite application de dessin"
+
+version = "1.24.5~ynh3"
+
+maintainers = ["Raoul de Limezy"]
+
+[upstream]
+license = "MIT"
+website = "https://tldraw.com"
+demo = "https://tldraw.com"
+admindoc = "https://github.com/tldraw/tldraw/blob/main/guides/documentation.md"
+userdoc = "https://github.com/tldraw/tldraw/blob/main/guides/documentation.md"
+code = "https://github.com/tldraw/tldraw"
+
+[integration]
+yunohost = ">= 11.1.20"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "2500M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    help.en = "TLDraw needs a fully dedicated domain"
+    help.fr = "TLDraw nécessite une installation à la racine du domaine"
+    type = "domain"
+    full_domain = true
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.publickey]
+    ask.en = "Liveblocks API Public Key"
+    ask.fr = "Clé publique de l'API Liveblocks"
+    help.en = "Multiplayer mode requires a Liveblocks API Public Key (you can get one for free at https://liveblocks.io). Don't input anything if you don't want multiplayer mode."
+    help.fr = "Le mode d'édition instantanée requiert une clef publique d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée."
+    type = "string"
+    optional = true
+
+    [install.secretkey]
+    ask.en = "Liveblocks API Secret Key"
+    ask.fr = "Clé secrète de l'API Liveblocks"
+    help.en = "Multiplayer mode requires a Liveblocks API Secret Key (you can get one for free at https://liveblocks.io). Don't input anything if you don't want multiplayer mode."
+    help.fr = "Le mode d'édition instantanée requiert une clef secrete d'API Liveblocks (vous pouvez en obtenir une gratuitement sur ttps://liveblocks.io). Ne mettez rien si vous ne souhaitez pas de mode d'étition instantanée."
+    type = "string"
+    optional = true
+
+[resources]
+        [resources.sources.main]
+        url = "https://github.com/tldraw/tldraw/archive/8e55e263bf45cb6d425178c638aec385ec01e62c.zip"
+        sha256 = "d090aac97266e043418ec34d46e722dd69c7dace4bd30f39afb9478eb21271d1"
+        autoupdate.upstream = "https://github.com/tldraw/tldraw"
+        autoupdate.strategy = "latest_github_commit"
+
+    [resources.ports]
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = ""
+    extras.yarn.repo = "deb https://dl.yarnpkg.com/debian/ stable main"
+    extras.yarn.key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
+    extras.yarn.packages = "yarn"
