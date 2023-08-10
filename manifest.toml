@@ -5,7 +5,7 @@ name = "TLDraw"
 description.en = "Tiny little drawing app"
 description.fr = "Petite application de dessin"
 
-version = "1.24.5~ynh3"
+version = "2023.08.10~ynh3"
 
 maintainers = ["Raoul de Limezy"]
 
@@ -56,8 +56,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/tldraw/tldraw/archive/8e55e263bf45cb6d425178c638aec385ec01e62c.zip"
-        sha256 = "d090aac97266e043418ec34d46e722dd69c7dace4bd30f39afb9478eb21271d1"
+        url = "https://github.com/tldraw/tldraw/archive/eaba3c8f2ab5dc5ee9f898bef41898b314e5926c.tar.gz"
+        sha256 = "f5026275414d7176fef467f6c89139c8352e283a848371ffba2b4702d0c1a5cd"
         autoupdate.upstream = "https://github.com/tldraw/tldraw"
         autoupdate.strategy = "latest_github_commit"
 
