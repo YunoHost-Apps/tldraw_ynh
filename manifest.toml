@@ -13,8 +13,6 @@ maintainers = ["Raoul de Limezy"]
 license = "MIT"
 website = "https://tldraw.com"
 demo = "https://tldraw.com"
-admindoc = "https://github.com/tldraw/tldraw/blob/main/guides/documentation.md"
-userdoc = "https://github.com/tldraw/tldraw/blob/main/guides/documentation.md"
 code = "https://github.com/tldraw/tldraw"
 
 [integration]
