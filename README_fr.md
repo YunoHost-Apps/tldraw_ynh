@@ -37,8 +37,6 @@ TLDraw is a tiny little drawing app.
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://tldraw.com>
-* Documentation officielle utilisateur : <https://github.com/tldraw/tldraw/blob/main/guides/documentation.md>
-* Documentation officielle de l’admin : <https://github.com/tldraw/tldraw/blob/main/guides/documentation.md>
 * Dépôt de code officiel de l’app : <https://github.com/tldraw/tldraw>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_tldraw>
 * Signaler un bug : <https://github.com/YunoHost-Apps/tldraw_ynh/issues>
