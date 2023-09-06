@@ -16,7 +16,7 @@ demo = "https://tldraw.com"
 code = "https://github.com/tldraw/tldraw"
 
 [integration]
-yunohost = ">= 11.1.20"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
 ldap = false
@@ -27,10 +27,7 @@ ram.runtime = "50M"
 
 [install]
     [install.domain]
-    help.en = "TLDraw needs a fully dedicated domain"
-    help.fr = "TLDraw nécessite une installation à la racine du domaine"
     type = "domain"
-    full_domain = true
 
     [install.init_main_permission]
     type = "group"
