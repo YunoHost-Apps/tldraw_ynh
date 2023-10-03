@@ -25,7 +25,7 @@ TLDraw est une petite application de dessin.
 - Prêt pour PWA
 - Mode multijoueur (compatible iFrame)
 
-**Version incluse :** 1.24.5~ynh3
+**Version incluse :** 2023.10.03~ynh1
 
 **Démo :** https://tldraw.com
 
@@ -37,7 +37,6 @@ TLDraw est une petite application de dessin.
 
 * Site officiel de l’app : <https://tldraw.com>
 * Dépôt de code officiel de l’app : <https://github.com/tldraw/tldraw>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_tldraw>
 * Signaler un bug : <https://github.com/YunoHost-Apps/tldraw_ynh/issues>
 
 ## Informations pour les développeurs
