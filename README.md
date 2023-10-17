@@ -26,7 +26,7 @@ TLDraw is a tiny little drawing app.
 - Multiplayer mode (iFrame compatible)
 
 
-**Shipped version:** 1.24.5~ynh3
+**Shipped version:** 2023.10.17~ynh1
 
 **Demo:** https://tldraw.com
 
@@ -38,7 +38,6 @@ TLDraw is a tiny little drawing app.
 
 * Official app website: <https://tldraw.com>
 * Upstream app code repository: <https://github.com/tldraw/tldraw>
-* YunoHost documentation for this app: <https://yunohost.org/app_tldraw>
 * Report a bug: <https://github.com/YunoHost-Apps/tldraw_ynh/issues>
 
 ## Developer info
