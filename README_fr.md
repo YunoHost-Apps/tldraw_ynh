@@ -16,15 +16,14 @@ Il NE doit PAS être modifié à la main.
 
 ## Vue d’ensemble
 
-TLDraw is a tiny little drawing app.
+TLDraw est une petite application de dessin.
 
-### Features
+### Caractéristiques
 
-- Very clean and nice UX
-- Snappy and very low memory footprint on the server
-- PWA ready
-- Multiplayer mode (iFrame compatible)
-
+- UX très propre et agréable
+- Empreinte mémoire vive et très faible sur le serveur
+- Prêt pour PWA
+- Mode multijoueur (compatible iFrame)
 
 **Version incluse :** 1.24.5~ynh3
 
