@@ -53,8 +53,9 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/tldraw/tldraw/archive/ed14e7e5107aee8dd64c70afa255355e0a4f19a2.tar.gz"
         sha256 = "bbd87b4e1baee845c3af81a8dc427fbabc5ed453aa5e2a8b97cdef36f36e6667"
-        autoupdate.upstream = "https://github.com/tldraw/tldraw"
-        autoupdate.strategy = "latest_github_commit"
+        # Disabled autoupdate for now because it's flooding with PRs which are failing the test
+        # The "multiplayer" patch needs to be fixed to be adapted to newer versions
+        #autoupdate.strategy = "latest_github_commit"
 
     [resources.ports]
 
