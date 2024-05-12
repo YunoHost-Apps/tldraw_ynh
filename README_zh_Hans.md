@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 TLDraw
+# YunoHost 上的 TLDraw
 
 [![集成程度](https://dash.yunohost.org/integration/tldraw.svg)](https://dash.yunohost.org/appci/app/tldraw) ![工作状态](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
 
@@ -26,7 +26,7 @@ TLDraw is a tiny little drawing app.
 - Multiplayer mode (iFrame compatible)
 
 
-**分发版本：** 1.24.5~ynh3
+**分发版本：** 2023.11.22~ynh1
 
 **演示：** <https://tldraw.com>
 
