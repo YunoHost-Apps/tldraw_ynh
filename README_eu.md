@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # TLDraw YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/tldraw.svg)](https://dash.yunohost.org/appci/app/tldraw) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/tldraw.svg)](https://ci-apps.yunohost.org/ci/apps/tldraw/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
 
 [![Instalatu TLDraw YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=tldraw)
 

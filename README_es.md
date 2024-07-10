@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # TLDraw para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/tldraw.svg)](https://dash.yunohost.org/appci/app/tldraw) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/tldraw.svg)](https://ci-apps.yunohost.org/ci/apps/tldraw/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
 
 [![Instalar TLDraw con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=tldraw)
 
