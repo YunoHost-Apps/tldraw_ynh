@@ -5,7 +5,7 @@ name = "TLDraw"
 description.en = "Tiny little drawing app"
 description.fr = "Petite application de dessin"
 
-version = "1.24.5~ynh3"
+version = "2.3.0~ynh1"
 
 maintainers = ["Raoul de Limezy"]
 
@@ -51,11 +51,11 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://github.com/tldraw/tldraw/archive/8e55e263bf45cb6d425178c638aec385ec01e62c.zip"
-    sha256 = "d090aac97266e043418ec34d46e722dd69c7dace4bd30f39afb9478eb21271d1"
+    url = "https://github.com/tldraw/tldraw/archive/refs/tags/v2.3.0.tar.gz"
+    sha256 = "7f66ab29a755ad085695730690b6be1337c08a727eff687163990d4ecca696d6"
     # Disabled autoupdate for now because it's flooding with PRs which are failing the test
     # The "multiplayer" patch needs to be fixed to be adapted to newer versions
-    #autoupdate.strategy = "latest_github_tag"
+    autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
 
