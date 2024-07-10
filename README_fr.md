@@ -25,7 +25,7 @@ TLDraw est une petite application de dessin.
 - Prêt pour PWA
 - Mode multijoueur (compatible iFrame)
 
-**Version incluse :** 1.24.5~ynh3
+**Version incluse :** 2024.02.26~ynh1
 
 **Démo :** <https://tldraw.com>
 
