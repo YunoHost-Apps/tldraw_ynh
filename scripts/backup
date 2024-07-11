@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -22,23 +20,15 @@ ynh_print_info --message="Declaring files to be backed up..."
 ynh_backup --src_path="$install_dir"
 
 #=================================================
-# BACKUP THE NGINX CONFIGURATION
+# SYSTEM CONFIGURATION
 #=================================================
 
 ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
-#=================================================
-# BACKUP FAIL2BAN CONFIGURATION
-#=================================================
+ynh_backup --src_path="/etc/systemd/system/$app.service"
 
 ynh_backup --src_path="/etc/fail2ban/jail.d/$app.conf"
 ynh_backup --src_path="/etc/fail2ban/filter.d/$app.conf"
-
-#=================================================
-# SPECIFIC BACKUP
-#=================================================
-# BACKUP LOGROTATE
-#=================================================
 
 ynh_backup --src_path="/etc/logrotate.d/$app"
 
@@ -47,12 +37,6 @@ ynh_backup --src_path="/etc/logrotate.d/$app"
 #=================================================
 
 ynh_backup --src_path="/var/log/$app/$app.log"
-
-#=================================================
-# BACKUP SYSTEMD
-#=================================================
-
-ynh_backup --src_path="/etc/systemd/system/$app.service"
 
 #=================================================
 # END OF SCRIPT
