@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__INSTALL_DIR__/apps/www/
+WorkingDirectory=__INSTALL_DIR__/sources/apps/www/
 Environment="NODE_ENV=production"
 Environment="__YNH_NODE_LOAD_PATH__"
 ExecStart=yarn start --port=__PORT__

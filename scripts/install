@@ -38,7 +38,7 @@ chown -R "$app:www-data" "$install_dir"
 # BUILD YARN DEPENDENCIES
 #=================================================
 
-pushd "$install_dir"
+pushd "$install_dir/sources"
 	ynh_use_nodejs
 	ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn cache clean
 	ynh_exec_warn_less ynh_exec_as "$app" env "$ynh_node_load_PATH" yarn install --network-timeout 1000000000
