@@ -40,7 +40,7 @@ chown -R "$app:www-data" "$install_dir"
 #=================================================
 
 ynh_use_nodejs
-ynh_exec_as "$app" env "$ynh_node_load_PATH" corepack enable --install-dir "$install_dir/bin"
+ynh_exec_as "$app" env "$ynh_node_load_PATH" corepack enable --install-directory "$install_dir/bin"
 
 pushd "$install_dir/sources"
 	ynh_exec_warn_less ynh_exec_as "$app" env COREPACK_ENABLE_DOWNLOAD_PROMPT=0 "$ynh_node_load_PATH" "$install_dir/bin/yarn" cache clean
