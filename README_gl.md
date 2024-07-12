@@ -26,7 +26,7 @@ TLDraw is a tiny little drawing app.
 - Multiplayer mode (iFrame compatible)
 
 
-**Versión proporcionada:** 1.24.5~ynh3
+**Versión proporcionada:** 2.3.0~ynh1
 
 **Demo:** <https://tldraw.com>
 
