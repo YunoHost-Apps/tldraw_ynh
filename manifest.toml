@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "tldraw"
@@ -5,7 +7,7 @@ name = "TLDraw"
 description.en = "Tiny little drawing app"
 description.fr = "Petite application de dessin"
 
-version = "1.24.5~ynh3"
+version = "1.24.5~ynh4"
 
 maintainers = ["Raoul de Limezy"]
 
@@ -57,14 +59,14 @@ ram.runtime = "50M"
     # The "multiplayer" patch needs to be fixed to be adapted to newer versions
     #autoupdate.strategy = "latest_github_tag"
 
-    [resources.ports]
-
     [resources.system_user]
 
     [resources.install_dir]
 
     [resources.permissions]
     main.url = "/"
+
+    [resources.ports]
 
     [resources.apt]
     packages = ""
