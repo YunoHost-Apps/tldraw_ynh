@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # TLDraw YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/tldraw.svg)](https://ci-apps.yunohost.org/ci/apps/tldraw/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/tldraw)](https://ci-apps.yunohost.org/ci/apps/tldraw/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/tldraw)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/tldraw)
 
 [![Instalatu TLDraw YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=tldraw)
 
@@ -26,7 +28,7 @@ TLDraw is a tiny little drawing app.
 - Multiplayer mode (iFrame compatible)
 
 
-**Paketatutako bertsioa:** 1.24.5~ynh3
+**Paketatutako bertsioa:** 1.24.5~ynh4
 
 **Demoa:** <https://tldraw.com>
 

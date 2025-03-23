@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # TLDraw para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/tldraw.svg)](https://ci-apps.yunohost.org/ci/apps/tldraw/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/tldraw)](https://ci-apps.yunohost.org/ci/apps/tldraw/)
+![Estado funcional](https://apps.yunohost.org/badge/state/tldraw)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/tldraw)
 
 [![Instalar TLDraw con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=tldraw)
 
@@ -26,7 +28,7 @@ TLDraw is a tiny little drawing app.
 - Multiplayer mode (iFrame compatible)
 
 
-**Versión actual:** 1.24.5~ynh3
+**Versión actual:** 1.24.5~ynh4
 
 **Demo:** <https://tldraw.com>
 
@@ -43,7 +45,7 @@ TLDraw is a tiny little drawing app.
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/tldraw_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/tldraw_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
