@@ -5,7 +5,9 @@ Il NE doit PAS être modifié à la main.
 
 # TLDraw pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/tldraw.svg)](https://ci-apps.yunohost.org/ci/apps/tldraw/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/tldraw.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/tldraw.maintain.svg)
+[![Niveau d’intégration](https://apps.yunohost.org/badge/integration/tldraw)](https://ci-apps.yunohost.org/ci/apps/tldraw/)
+![Statut du fonctionnement](https://apps.yunohost.org/badge/state/tldraw)
+![Statut de maintenance](https://apps.yunohost.org/badge/maintained/tldraw)
 
 [![Installer TLDraw avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=tldraw)
 
@@ -25,7 +27,8 @@ TLDraw est une petite application de dessin.
 - Prêt pour PWA
 - Mode multijoueur (compatible iFrame)
 
-**Version incluse :** 1.24.5~ynh3
+
+**Version incluse :** 1.24.5~ynh4
 
 **Démo :** <https://tldraw.com>
 
