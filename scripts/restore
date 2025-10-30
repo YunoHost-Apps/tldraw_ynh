@@ -14,9 +14,9 @@ ynh_restore "$install_dir"
 #=================================================
 ynh_script_progression "Restoring the Fail2Ban configuration..."
 
-ynh_restore "/etc/fail2ban/jail.d/$app.conf"
-ynh_restore "/etc/fail2ban/filter.d/$app.conf"
-ynh_systemctl --action=restart --service=fail2ban
+#ynh_restore "/etc/fail2ban/jail.d/$app.conf"
+#ynh_restore "/etc/fail2ban/filter.d/$app.conf"
+#ynh_systemctl --action=restart --service=fail2ban
 
 #=================================================
 # RESTORE THE NGINX CONFIGURATION
