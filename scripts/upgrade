@@ -1,127 +1,89 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# CHECK VERSION
-#=================================================
-
-upgrade_type=$(ynh_check_app_version_changed)
-
-#=================================================
-# STANDARD UPGRADE STEPS
-#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Stopping a systemd service..." --weight=1
+ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
+ynh_systemctl --service=$app --action="stop"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Upgrading source files..." --weight=1
+ynh_script_progression "Upgrading source files..."
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir"
-fi
-
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
-
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Upgrading dependencies..." --weight=1
-
-# Install nodejs
-ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source --dest_dir="$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=1
+ynh_script_progression "Upgrading NGINX web server configuration..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Patching multiplayer file..." --weight=1
+ynh_script_progression "Patching multiplayer file..."
 
-ynh_secure_remove --file="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
-ynh_add_config --template="../conf/MultiplayerMenu.tsx" --destination="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
-
-chmod 400 "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
-chown $app:$app "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+ynh_safe_rm "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+ynh_config_add --template="MultiplayerMenu.tsx" --destination="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating a configuration file..." --weight=1
+ynh_script_progression "Updating configuration..."
 
-ynh_add_config --template="../conf/.env" --destination="$install_dir/apps/www/.env"
-
-chmod 400 "$install_dir/apps/www/.env"
-chown $app:$app "$install_dir/apps/www/.env"
+ynh_config_add --template=".env" --destination="$install_dir/apps/www/.env"
 
 #=================================================
 # BUILD YARN DEPENDENCIES
 #=================================================
 
 pushd "$install_dir"
-	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --network-timeout 1000000000 2>&1
-	ynh_script_progression --message="Cleaning cache... " --weight=3
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean 2>&1
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build 2>&1
+	ynh_hide_warnings ynh_exec_as_app yarn install --network-timeout 1000000000 2>&1
+	ynh_script_progression "Cleaning cache... "
+	ynh_hide_warnings ynh_exec_as_app yarn cache clean 2>&1
+	ynh_hide_warnings ynh_exec_as_app yarn build 2>&1
 popd
 
 #=================================================
 # SETUP SYSTEMD
 #=================================================
-ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
+ynh_script_progression "Upgrading systemd configuration..."
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_config_add_systemd
 
-#=================================================
-# GENERIC FINALIZATION
 #=================================================
 # SETUP LOGROTATE
 #=================================================
-ynh_script_progression --message="Upgrading logrotate configuration..." --weight=1
+ynh_script_progression "Upgrading logrotate configuration..."
 
 # Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
+ynh_config_add_logrotate
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
+ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add $app --description="A tiny little drawing app" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemctl --service=$app --action="start"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Upgrade of $app completed" --last
+ynh_script_progression "Upgrade of $app completed"
