@@ -1,47 +1,29 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
-source _common.sh
 source /usr/share/yunohost/helpers
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=1
-
-# Install nodejs
-ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir"
-
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=1
+ynh_script_progression "Configuring NGINX web server..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Patching multiplayer file..." --weight=1
+ynh_script_progression "Patching multiplayer file..."
 
-ynh_secure_remove --file="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
-ynh_add_config --template="../conf/MultiplayerMenu.tsx" --destination="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+ynh_safe_rm "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
+ynh_config_add --template="MultiplayerMenu.tsx" --destination="$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 
 chmod 400 "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
 chown $app:$app "$install_dir/packages/tldraw/src/components/TopPanel/MultiplayerMenu/MultiplayerMenu.tsx"
@@ -49,60 +31,55 @@ chown $app:$app "$install_dir/packages/tldraw/src/components/TopPanel/Multiplaye
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression "Adding $app's configuration..."
 
-ynh_add_config --template="../conf/.env" --destination="$install_dir/apps/www/.env"
-
-chmod 400 "$install_dir/apps/www/.env"
-chown $app:$app "$install_dir/apps/www/.env"
+ynh_config_add --template=".env" --destination="$install_dir/apps/www/.env"
 
 #=================================================
 # BUILD YARN DEPENDENCIES
 #=================================================
 
 pushd "$install_dir"
-	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --network-timeout 1000000000
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
+
+	ynh_hide_warnings ynh_exec_as_app yarn cache clean
+	ynh_hide_warnings ynh_exec_as_app yarn install --network-timeout 1000000000
+	ynh_hide_warnings ynh_exec_as_app yarn cache clean
+	ynh_hide_warnings ynh_exec_as_app yarn build
 popd
 
 #=================================================
 # SETUP SYSTEMD
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=1
+ynh_script_progression "Configuring $app's systemd service..."
 
 # Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_config_add_systemd
 
-#=================================================
-# GENERIC FINALIZATION
 #=================================================
 # SETUP LOGROTATE
 #=================================================
-ynh_script_progression --message="Configuring log rotation..." --weight=1
+ynh_script_progression "Configuring log rotation..."
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate
+ynh_config_add_logrotate
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
+ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add $app --description="A tiny little drawing app" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemctl --service=$app --action="start"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
