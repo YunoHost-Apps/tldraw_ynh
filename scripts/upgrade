@@ -46,6 +46,9 @@ ynh_config_add --template=".env" --destination="$install_dir/apps/www/.env"
 #=================================================
 
 pushd "$install_dir"
+    corepack enable
+    ynh_hide_warnings corepack prepare  yarn@latest --activate
+	
 	ynh_hide_warnings ynh_exec_as_app yarn install --network-timeout 1000000000 2>&1
 	ynh_script_progression "Cleaning cache... "
 	ynh_hide_warnings ynh_exec_as_app yarn cache clean 2>&1
