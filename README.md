@@ -12,7 +12,7 @@ Tiny little drawing app
 
 [![🌐 Official app website](https://img.shields.io/badge/Official_app_website-darkgreen?style=for-the-badge)](https://tldraw.com)
 [![App Demo](https://img.shields.io/badge/App_Demo-blue?style=for-the-badge)](https://tldraw.com)
-[![Version: 1.24.5~ynh4](https://img.shields.io/badge/Version-1.24.5~ynh4-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/tldraw/)
+[![Version: 1.24.5~ynh5](https://img.shields.io/badge/Version-1.24.5~ynh5-rgb(18,138,11)?style=for-the-badge)](https://ci-apps.yunohost.org/ci/apps/tldraw/)
 
 <div align="center">
 <a href="https://apps.yunohost.org/app/tldraw"><img height="100px" src="https://github.com/YunoHost/yunohost-artwork/raw/refs/heads/main/badges/neopossum-badges/badge_more_info_on_the_appstore.svg"/></a>
